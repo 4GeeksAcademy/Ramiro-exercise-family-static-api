@@ -34,12 +34,23 @@ class FamilyStructure:
 
     def delete_member(self, id):
         # fill this method and update the return
-        pass
+        delete = list(filter(lambda item: item["id"] != id, self._members))
+        self._members.clear()
+        self._members.extend(delete)
+
+        return self._members
+
+
 
     def get_member(self, id):
         # fill this method and update the return
-        pass
-
+        specific_dict = [item for item in self._members if item['id'] == id]
+        if specific_dict:
+            return (specific_dict[0])
+        else:
+            return ("No se encontro el miembro en la lista.")
+        
+        
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
         return self._members
